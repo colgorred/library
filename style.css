@@ -1,0 +1,207 @@
+:root {
+  --cream: #fff3e4;
+  --creamlight: #fff8f0;
+  --coffee: #6b4f4f;
+  --green: #68b0ab;
+  --richblack: #033a3a;
+  --rose: #f56476;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  position: relative;
+  background-color: var(--cream);
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  word-break: normal;
+}
+
+.fa-book {
+  color: var(--green);
+}
+.header {
+  background-color: var(--coffee);
+  color: var(--cream);
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: var(--cream);
+}
+
+input[type="text"],
+input[type="number"] {
+  cursor: text;
+  background: white;
+  color: var(--richblack);
+}
+
+button,
+input {
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: filter 0.15s ease-in-out;
+}
+
+.btn:hover {
+  filter: brightness(90%);
+}
+
+.btn-add {
+  font-weight: 600;
+  background: var(--green);
+  color: var(--cream);
+}
+
+.is-read {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--green);
+}
+
+.fa-circle-plus {
+  padding-right: 0.5rem;
+}
+
+.main {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.modal {
+  color: var(--cream);
+  position: fixed;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color: var(--coffee);
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.15s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.2) -4px 9px 25px -6px;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.add-book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.fa-github {
+  color: var(--richblack);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.container {
+  padding: 0.5rem 1rem;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.overlay.active {
+  display: block;
+}
+
+.footer p {
+  font-size: 16px;
+  color: var(--richblack);
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 18px;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: var(--coffee);
+  color: var(--cream);
+  box-shadow: rgba(0, 0, 0, 0.5) -4px 9px 25px -6px;
+  line-height: 1.2;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  background-color: var(--green);
+}
+
+.btn-light-red {
+  background-color: var(--rose);
+}
+
+.book-card-title {
+  font-size: 24px;
+  font-weight: 600;
+  font-style: italic;
+}
