@@ -1,6 +1,6 @@
 :root {
-  --cream: #fff3e4;
-  --creamlight: #fff8f0;
+  --cream: hsl(33, 100%, 95%);
+  --creamdark: hsl(33, 100%, 90%);
   --coffee: #6b4f4f;
   --green: #68b0ab;
   --richblack: #033a3a;
@@ -98,7 +98,7 @@ input {
 }
 
 .main {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   text-align: center;
 }
 
@@ -178,18 +178,19 @@ input {
   flex-direction: column;
   justify-content: space-between;
   font-size: 18px;
-  gap: 0.5rem;
   padding: 0.5rem;
   border-radius: 5px;
   background-color: var(--coffee);
   color: var(--cream);
   box-shadow: rgba(0, 0, 0, 0.5) -4px 9px 25px -6px;
   line-height: 1.2;
+  font-weight: 400;
 }
 
 .button-group {
   display: flex;
   justify-content: space-between;
+  padding-top: 10px;
 }
 
 .btn {
@@ -197,11 +198,43 @@ input {
 }
 
 .btn-light-red {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--rose);
+  width: 90px;
+}
+
+.btn-light-green {
+  width: 90px;
+}
+.btn-remove-red {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--rose);
+  padding: 0;
 }
 
 .book-card-title {
   font-size: 24px;
   font-weight: 600;
   font-style: italic;
+  padding: 0.5rem 1rem;
+}
+
+.author,
+.pages {
+  color: var(--creamdark);
+}
+
+.fa-trash-can {
+  padding: 1rem;
+}
+
+.error-msg.active {
+  background: #f56476;
+  padding: 0.5rem;
+  font-size: 16px;
+  border-radius: 0;
 }

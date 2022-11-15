@@ -1,14 +1,14 @@
 let library = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, isRead) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.read = read;
+  this.isRead = isRead;
 }
 
-function addBookToLibrary(title, author, pages, read) {
-  const newBook = new Book(title, author, pages, read);
+function addBookToLibrary(title, author, pages, isRead) {
+  const newBook = new Book(title, author, pages, isRead);
   library.push(newBook);
 }
 
@@ -55,10 +55,12 @@ const createBookCard = (book) => {
   bookCard.classList.add("book-card");
   buttonGroup.classList.add("button-group");
   readBtn.classList.add("btn");
-  removeBtn.classList.add("btn", "btn-light-red");
+  removeBtn.classList.add("btn", "btn-remove-red");
   title.classList.add("book-card-title");
-  //readBtn.onclick = toggleRead;
-  //removeBtn.onclick = removeBook;
+  readBtn.onclick = toggleRead;
+  removeBtn.onclick = removeBook;
+  author.classList.add("author");
+  pages.classList.add("pages");
 
   title.textContent = book.title;
   author.textContent = book.author;
@@ -69,7 +71,7 @@ const createBookCard = (book) => {
     readBtn.textContent = "Read";
     readBtn.classList.add("btn-light-green");
   } else {
-    readBtn.textContent = "Not read";
+    readBtn.textContent = "Unread";
     readBtn.classList.add("btn-light-red");
   }
 
@@ -90,16 +92,42 @@ const getBookFromInput = () => {
   return new Book(title, author, pages, isRead);
 };
 
+const handleKeyboardInput = (e) => {
+  if (e.key === "Escape") closeAddBookModal();
+};
+
+const addBook = (e) => {
+  e.preventDefault();
+  const newBook = getBookFromInput();
+  if (library.some((book) => book.title === newBook.title)) {
+    errorMsg.textContent = "This book is already added to your library";
+    errorMsg.classList.add("active");
+    return;
+  }
+  library.push(newBook);
+  updateBooksGrid();
+  closeAddBookModal();
+};
+
+const toggleRead = (e) => {
+  const title = e.target.parentNode.parentNode.firstChild.innerText;
+  const book = library.find((book) => book.title === title);
+  book.isRead = !book.isRead;
+  updateBooksGrid();
+};
+
+const removeBook = (e) => {
+  const title = e.target.parentNode.parentNode.parentNode.firstChild.innerText;
+  console.log(title);
+  library = library.filter((book) => book.title !== title);
+  updateBooksGrid();
+};
+
 addBookBtn.onclick = openAddBookModal;
 overlay.onclick = closeAddBookModal;
+window.onkeydown = handleKeyboardInput;
+addBookForm.onsubmit = addBook;
 
-addBookToLibrary("The Hobbit", "J.R.R Tolkien", 34, true);
-addBookToLibrary("The Hobbit", "J.R.R Tolkien", 34, true);
-
-addBookToLibrary("The Hobbit", "J.R.R Tolkien", 34, true);
-
-addBookToLibrary("The Hobbit", "J.R.R Tolkien", 34, true);
-
-addBookToLibrary("The Hobbit", "J.R.R Tolkien", 34, true);
-
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 368, true);
+addBookToLibrary("The Silmarillion", "J.R.R. Tolkien", 480, false);
 updateBooksGrid();
